@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\STCharacters.txt" />
+    <EmbeddedResource Include="Resources\TSCharacters.txt" />
+  </ItemGroup>
+
+</Project>
