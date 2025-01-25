@@ -1,6 +1,6 @@
 # ZhConv.Net [![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE.TXT) [![Build](https://github.com/huoshan12345/ZhConv.Net/actions/workflows/build.yml/badge.svg)](https://github.com/huoshan12345/ZhConv.Net/actions/workflows/build.yml)
 
-A simple and efficient parser for UCI (Unified Configuration Interface) format files implemented in C#.
+A lightweight tool that allows users to seamlessly convert text between Traditional Chinese and Simplified Chinese.
 ## Latest Builds
 
 ||TargetFramework|Package|
