@@ -1,4 +1,4 @@
-# ZhConv.Net
+# ZhConv.Net [![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE.TXT) [![Build](https://github.com/huoshan12345/ZhConv.Net/actions/workflows/build.yml/badge.svg)](https://github.com/huoshan12345/ZhConv.Net/actions/workflows/build.yml)
 
 A lightweight .NET library for converting between Simplified and Traditional Chinese characters.
 
