@@ -8,6 +8,9 @@ using System.Text;
 
 namespace ZhConv.Net;
 
+/// <summary>
+/// Provides methods for converting between Simplified and Traditional Chinese characters.
+/// </summary>
 public static class ChineseConverter
 {
     internal static readonly Lazy<Dictionary<string, string>> STCharacters = new(() => LoadCharacters("STCharacters.txt"));
@@ -21,6 +24,15 @@ public static class ChineseConverter
             .ToDictionary(m => m[0], m => m[1].Split(' ')[0]);
     }
 
+    /// <summary>
+    /// Converts Chinese text between Simplified and Traditional forms.
+    /// </summary>
+    /// <param name="text">The text to convert.</param>
+    /// <param name="direction">The conversion direction.</param>
+    /// <param name="preferWinApi">If true and running on Windows, uses the Windows API for conversion; otherwise uses the internal character mapping dictionary.</param>
+    /// <returns>The converted text.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="text"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="direction"/> is not a defined value in <see cref="ChineseConversionDirection"/>.</exception>
     public static string Convert(string text, ChineseConversionDirection direction, bool preferWinApi = false)
     {
         if (text == null)
@@ -37,11 +49,25 @@ public static class ChineseConverter
             : ConvertUsingDictionary(text, direction);
     }
 
+    /// <summary>
+    /// Converts Simplified Chinese text to Traditional Chinese.
+    /// </summary>
+    /// <param name="source">The Simplified Chinese text to convert.</param>
+    /// <param name="preferWinApi">If true and running on Windows, uses the Windows API for conversion; otherwise uses the internal character mapping dictionary.</param>
+    /// <returns>The text converted to Traditional Chinese.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
     public static string ToTraditional(string source, bool preferWinApi = false)
     {
         return Convert(source, ChineseConversionDirection.ToTraditional, preferWinApi);
     }
 
+    /// <summary>
+    /// Converts Traditional Chinese text to Simplified Chinese.
+    /// </summary>
+    /// <param name="source">The Traditional Chinese text to convert.</param>
+    /// <param name="preferWinApi">If true and running on Windows, uses the Windows API for conversion; otherwise uses the internal character mapping dictionary.</param>
+    /// <returns>The text converted to Simplified Chinese.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
     public static string ToSimplified(string source, bool preferWinApi = false)
     {
         return Convert(source, ChineseConversionDirection.ToSimplified, preferWinApi);
