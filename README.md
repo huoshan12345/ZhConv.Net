@@ -15,7 +15,7 @@ A lightweight .NET library for converting between Simplified and Traditional Chi
 
 ||TargetFramework(s)|Package|
 |----|----|----|
-|ZhConv.Net|![netstandard2.0](https://img.shields.io/badge/netstandard-2.0-30a14e.svg)|![NuGet Version](https://img.shields.io/nuget/v/ZhConv.Net)|
+|ZhConv.Net|![netstandard2.0](https://img.shields.io/badge/netstandard-2.0-30a14e.svg)|[![](https://img.shields.io/nuget/v/ZhConv.Net?logo=nuget&label=nuget)](https://www.nuget.org/packages/ZhConv.Net)|
 
 ## Installation
 
