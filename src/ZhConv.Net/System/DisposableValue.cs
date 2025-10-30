@@ -10,6 +10,7 @@ internal class DisposableValue<T>(T value, Action<T>? disposeAction = null) : ID
         {
             if (_disposed)
                 throw new ObjectDisposedException(nameof(Value));
+
             return value;
         }
     }
