@@ -78,8 +78,8 @@ jobs:
         run: dotnet build ${{ env.SOLUTION }} -c Release --no-restore
 
       - name: Test Release
-        timeout-minutes: 10
-        run: dotnet test /nr:false ${{ env.SOLUTION }} -c Release --no-restore --no-build
+        timeout-minutes: 5
+        run: dotnet test --solution ${{ env.SOLUTION }} -c Release --no-restore --no-build
 
       - name: Test Report
         uses: dorny/test-reporter@main
