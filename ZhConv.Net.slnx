@@ -9,20 +9,24 @@
     <File Path="build/clean.ps1" />
     <File Path="build/pack.ps1" />
     <File Path="build/pkg.version" />
+    <File Path="build/Testing.props" />
   </Folder>
   <Folder Name="/config/">
     <File Path=".editorconfig" />
     <File Path="LICENSE.TXT" />
+    <File Path="NuGet.Config" />
     <File Path="README.md" />
   </Folder>
   <Folder Name="/src/">
     <File Path="src/Directory.Build.props" />
     <File Path="src/Directory.Build.targets" />
+    <File Path="src/Directory.Packages.props" />
     <Project Path="src/ZhConv.Net/ZhConv.Net.csproj" />
   </Folder>
   <Folder Name="/test/">
     <File Path="test/Directory.Build.props" />
     <File Path="test/Directory.Build.targets" />
+    <File Path="test/Directory.Packages.props" />
     <Project Path="test/ZhConv.Net.Tests/ZhConv.Net.Tests.csproj" />
   </Folder>
 </Solution>
