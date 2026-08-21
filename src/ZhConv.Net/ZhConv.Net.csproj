@@ -1,8 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <PackageReference Include="PolySharp" PrivateAssets="all" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\STCharacters.txt" />
     <EmbeddedResource Include="Resources\TSCharacters.txt" />
   </ItemGroup>

@@ -11,7 +11,7 @@ A lightweight .NET library for converting between Simplified and Traditional Chi
 - Simple and easy-to-use API
 - No external dependencies
 
-## Latest Builds
+## Packages
 
 ||TargetFramework(s)|Package|
 |----|----|----|

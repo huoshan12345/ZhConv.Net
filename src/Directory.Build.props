@@ -1,23 +1,17 @@
 <Project>
+  <Import Project="..\build\Package.props" />
   <PropertyGroup>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Nullable>enable</Nullable>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <LangVersion>latest</LangVersion>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <TargetFrameworks>netstandard2.0;</TargetFrameworks>
-    <PackageProjectUrl>https://github.com/huoshan12345/ZhConv.Net</PackageProjectUrl>
-    <PackageTags>ini;parser</PackageTags>
-    <Authors>huoshan12345</Authors>
-    <RepositoryUrl>https://github.com/huoshan12345/ZhConv.Net</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <Copyright>huoshan12345</Copyright>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591;CS8500;NU1900;NU5104</NoWarn>
+    <Nullable>enable</Nullable>
+    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+    <TargetFrameworks>netstandard2.0;net8.0;net9.0;net10.0;net472</TargetFrameworks>
+    <WarningsAsErrors>CS8785</WarningsAsErrors>
   </PropertyGroup>
-
-  <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>$(AssemblyName).Tests</_Parameter1>
-    </AssemblyAttribute>
-  </ItemGroup>
-
+  <PropertyGroup>
+    <IsWindows>$([MSBuild]::IsOSPlatform('Windows'))</IsWindows>
+    <TargetFrameworkVersion>$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)', 2))</TargetFrameworkVersion>
+  </PropertyGroup>
 </Project>
