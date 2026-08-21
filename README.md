@@ -13,9 +13,18 @@ A lightweight .NET library for converting between Simplified and Traditional Chi
 
 ## Packages
 
-||TargetFramework(s)|Package|
+|Package|Target Frameworks|NuGet|
 |----|----|----|
-|ZhConv.Net|![netstandard2.0](https://img.shields.io/badge/netstandard-2.0-30a14e.svg)|[![](https://img.shields.io/nuget/v/ZhConv.Net?logo=nuget&label=nuget)](https://www.nuget.org/packages/ZhConv.Net)|
+|[ZhConv.Net](src/ZhConv.Net)|![netstandard2.0](https://img.shields.io/badge/netstandard-2.0-30a14e.svg) ![net8.0](https://img.shields.io/badge/net-8.0-30a14e.svg) ![net9.0](https://img.shields.io/badge/net-9.0-30a14e.svg) ![net10.0](https://img.shields.io/badge/net-10.0-30a14e.svg) ![net472](https://img.shields.io/badge/net-472-30a14e.svg) |[![](https://img.shields.io/nuget/v/ZhConv.Net?logo=nuget&label=nuget)](https://www.nuget.org/packages/ZhConv.Net)|
+
+<details>
+<summary>Package Details</summary>
+
+|Package|Target Frameworks|
+|----|----|
+|[ZhConv.Net](src/ZhConv.Net)|A lightweight .NET library for converting between Simplified and Traditional Chinese characters.|
+
+</details>
 
 ## Installation
 
