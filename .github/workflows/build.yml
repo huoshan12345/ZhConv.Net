@@ -74,6 +74,7 @@ jobs:
             8.0.x
             9.0.x
             10.0.x
+            11.0.x
 
       - name: Restore
         run: dotnet restore ${{ env.SOLUTION }} -v q
@@ -117,6 +118,52 @@ jobs:
           name: ${{ env.ARTIFACTS_NAME }}
           path: ${{ env.ARTIFACTS_DIR }}
 
+  build-win:
+    runs-on: windows-latest
+    if: needs.changes.outputs.should-build == 'true'
+
+    needs:
+      - changes
+
+    env:
+      TMP: D:\tmp
+      TEMP: D:\tmp
+      DOTNET_INSTALL_DIR: D:\tools\dotnet
+      NUGET_PACKAGES: D:\.nuget\packages
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: |
+            8.0.x
+            9.0.x
+            10.0.x
+            11.0.x
+
+      - name: Restore
+        run: dotnet restore ${{ env.SOLUTION }} -v q
+
+      - name: Build
+        run: dotnet build ${{ env.SOLUTION }} -c Release --no-restore
+
+      - name: Test Release
+        timeout-minutes: 5
+        run: dotnet test --solution ${{ env.SOLUTION }} -c Release --no-restore --no-build
+
+      - name: Test Report
+        uses: dorny/test-reporter@main
+        if: (success() || failure())
+        with:
+          name: Test Report
+          path: TestResults/**/*.trx
+          reporter: dotnet-trx
+          list-suites: failed
+          list-tests: failed
+
   build-result:
     if: always()
     runs-on: ubuntu-latest
@@ -124,6 +171,7 @@ jobs:
     needs:
       - changes
       - build
+      - build-win
 
     steps:
       - name: Check result
@@ -135,6 +183,11 @@ jobs:
             @{
               Name = "build"
               Result = "${{ needs.build.result }}"
+              AllowSkipped = -not $shouldBuild
+            },
+            @{
+              Name = "build-win"
+              Result = "${{ needs.build-win.result }}"
               AllowSkipped = -not $shouldBuild
             },
             @{
