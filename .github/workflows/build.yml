@@ -18,6 +18,7 @@ permissions:
 env:
   SOLUTION: ZhConv.Net.slnx
   DOTNET_NOLOGO: 1
+  DOTNET_CLI_USE_MSBUILD_SERVER: false
   NUGET_SOURCE: https://api.nuget.org/v3/index.json
   MYGET_SOURCE: https://www.myget.org/F/huoshan12345/api/v2/package
   USE_NUGET: true
@@ -80,11 +81,12 @@ jobs:
         run: dotnet restore ${{ env.SOLUTION }} -v q
 
       - name: Build
-        run: dotnet build ${{ env.SOLUTION }} -c Release --no-restore
+        run: |
+          dotnet build ${{ env.SOLUTION }} -c Release --no-restore -nr:false
 
       - name: Test Release
         timeout-minutes: 5
-        run: dotnet test --solution ${{ env.SOLUTION }} -c Release --no-restore --no-build
+        run: dotnet test --solution ${{ env.SOLUTION }} -c Release --no-restore --no-build --no-artifact-post-processing
 
       - name: Test Report
         uses: dorny/test-reporter@main
@@ -148,11 +150,12 @@ jobs:
         run: dotnet restore ${{ env.SOLUTION }} -v q
 
       - name: Build
-        run: dotnet build ${{ env.SOLUTION }} -c Release --no-restore
+        run: |
+          dotnet build ${{ env.SOLUTION }} -c Release --no-restore -nr:false
 
       - name: Test Release
         timeout-minutes: 5
-        run: dotnet test --solution ${{ env.SOLUTION }} -c Release --no-restore --no-build
+        run: dotnet test --solution ${{ env.SOLUTION }} -c Release --no-restore --no-build --no-artifact-post-processing
 
       - name: Test Report
         uses: dorny/test-reporter@main
@@ -227,6 +230,7 @@ jobs:
 
     needs:
       - build
+      - build-win
 
     steps:
       - name: Download packages
